@@ -32,6 +32,22 @@ namespace queue_namespace
       }
     }
 
+    public int? dequeue()
+    {
+      if (head != tail)
+      {
+        head = head.Prev;
+        head.Next = null;
+        return head.Value;
+      }
+      else if (head != null)
+      {
+        head = tail = head.Prev = head.Next = null;
+        return null;
+      }
+      else return null;
+    }
+
     public void logFromTail()
     {
       while (tail != null)
@@ -39,6 +55,7 @@ namespace queue_namespace
         Console.WriteLine(tail.Value);
         tail = (tail.Next != null) ? tail.Next : null;
       }
+      Console.WriteLine("Queue is empty!");
     }
   }
   class queue
@@ -55,6 +72,19 @@ namespace queue_namespace
       queue.enqueue(0);
       queue.enqueue(1);
       queue.enqueue(2);
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
+      queue.dequeue();
       queue.logFromTail();
     }
   }
