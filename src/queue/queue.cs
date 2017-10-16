@@ -45,7 +45,12 @@ namespace queue_namespace
         head = tail = head.Prev = head.Next = null;
         return null;
       }
-      else return null;
+      else throw new Exception("queue is empty");
+    }
+
+    public int peek()
+    {
+      return head.Value;
     }
 
     public void logFromTail()
@@ -55,7 +60,7 @@ namespace queue_namespace
         Console.WriteLine(tail.Value);
         tail = (tail.Next != null) ? tail.Next : null;
       }
-      Console.WriteLine("Queue is empty!");
+      Console.WriteLine("End of queue!");
     }
   }
   class queue
@@ -81,9 +86,8 @@ namespace queue_namespace
       queue.dequeue();
       queue.dequeue();
       queue.dequeue();
-      queue.dequeue();
-      queue.dequeue();
-      queue.dequeue();
+      queue.enqueue(6);
+      queue.enqueue(6);
       queue.dequeue();
       queue.logFromTail();
     }
